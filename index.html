@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Golden Seed</title>
+  <meta name="description" content="Golden Seed Organic Official Website">
+  <meta name="keywords" content="Golden Seed Organic Official Website">
+
+
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="lightbox2/css/lightbox.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <!--banner-->
+  <section id="banner">
+    <div class="bg-color">
+      <header id="header">
+        <div class="container">
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#products">Products</a>
+            <a href="#event">Company</a>
+            <a href="#menu-list">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <!-- Use any element to open the sidenav -->
+          <span onclick="openNav()" class="pull-right menu-icon">☰</span>
+        </div>
+      </header>
+      <div class="container">
+        <div class="row center-div">
+          <div class="col-md-6 inner text-center">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div class="item active">
+                  <img src="images/all cf.HEIC" alt="Chania">
+                  <div class="carousel-caption">
+                    <h3 style="color: goldenrod;">Los Angeles</h3>
+                    <small>LA is always so much fun!</small>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img src="images/all cf.HEIC" alt="Chicago">
+                  <div class="carousel-caption">
+                    <h3>Chicago</h3>
+                    <p>Thank you, Chicago!</p>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <img src="images/bg2.jpg" alt="New York">
+                  <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="fa fa-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="fa fa-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / banner -->
+  <!--products-->
+  <section id="products" class="section-padding">
+    <div id="products-app" class="container">
+      <!------>
+      <div class="row" v-for="t in products">
+        <br><br><br><br>
+        <div class="col-md-12 text-center marb-35">
+          <h1 class="header-h">{{t.name | upper}}</h1>
+          <div class="details-sub">
+            <h4 class="pSub" v-if="t.sub">"{{t.sub | capitalize}}"</h4>
+            <p class="ing" v-if="t.ing">{{t.ing}}</p>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <br>
+        <div class="col-md-10">
+          <div class="col-md-6 col-sm-6">
+            <div class="about-info">
+              <h3 class="heading">Benefits</h3>
+              <div class="details-list">
+                <ul class="details-list-ul">
+                  <li v-for="b in t.benefits"><i class="fa fa-check"></i>{{b}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <a v-bind:href="'images/'+ t.pic" data-lightbox="image-1" v-bind:data-title="t.name">
+              <img id="imageresource" v-bind:src="'images/'+ t.pic" alt="" class="img-responsive">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+      <!---------------->
+    </div>
+  </section>
+  <!--/p[roducts-->
+  <!-- event -->
+  <section id="event">
+    <div class="bg-color" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-center" style="padding:60px;">
+            <h1 class="header-h">Company Profile</h1>
+          </div>
+          <div class="col-md-12" style="padding-bottom:60px;">
+            <div class="item active left">
+              <div class="col-md-4 col-sm-6 left-images">
+                <img
+                  src="data:image/jpeg;base64,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"
+                  class="img-responsive">
+              </div>
+              <div class="col-md-6 col-sm-6 details-text">
+                <div class="content-holder">
+                  <h2>CEO / President</h2>
+                  <p>The GOLDEN SEED PACKAGING SOLUTIONS INC. is a company that engage in Food manufacturing and Traders
+                    Business. Its players are group of company's with expertise in Food and Beverages and are committed
+                    to big
+                    projects based on speed quality and cost.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ event -->
+  <!-- menu -->
+  <section id="menu-list" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center marb-35">
+          <h1 class="header-h">The Company</h1>
+          <p class="header-p">
+            It is a service oriented company whose people are committed to quality and exellence in the Toll
+            Manufacturing Industry by performing prompt and quality work and reliable services with economical value to
+            our customers.
+          </p>
+          <p class="header-p">
+            The collective of the company strengthen the company's commitment to achieve the standard of excellence
+            needed by the customers requirements.
+          </p>
+        </div>
+
+        <div class="col-md-12  text-center" id="menu-flters">
+          <ul>
+            <li><a class="filter active" data-toggle="tab" href="#mission">Mission</a></li>
+            <li><a class="filter" data-toggle="tab" href="#vision">Vision</a></li>
+            <li><a class="filter" data-toggle="tab" href="#goals">Goals</a></li>
+          </ul>
+        </div>
+
+        <div class="container tab-content">
+          <div id="mission" class="tab-pane fade in active">
+            <h3>OUR MISSION</h3>
+            <br>
+            <div style="margin-left: 2%;">
+              <p>To provide superior products and services in the food and beverages industry.</p>
+              <p>To provide opportunities to the employees and enhance their skills in their specific field of
+                experties.</p>
+              <p>To contribute innovative research and products development.</p>
+            </div>
+          </div>
+          <div id="vision" class="container tab-pane fade">
+            <h3>OUR VISION</h3>
+            <br>
+            <div style="margin-left: 2%;">
+              <p>We aim to be one of the oleading suppliers in the industry providing world class products and services
+                in partnership with our clients, with an organizational committed to excellence.</p>
+              <p>We believe in the operation of our business with absolute integrity, efficiency and service excellence
+                to the people, to our customers, suppliers & personnels are the keys to our success.</p>
+            </div>
+          </div>
+          <div id="goals" class="tab-pane fade">
+            <h3>Our Goals</h3>
+            <br>
+            <div style="margin-left: 2%;">
+              <p>To provide the customers with valuable services and products.</p>
+              <p>To accumulate sales by extensive marketing strategies and positioning.</p>
+              <p>To become the primary suppliers and expertize concerning the food and beverages in the industry.</p>
+              <p>To research, conceptualize and build projects design to support the industry.</p>
+              <p>To utilize the application of employees potentials guided by sense of responsibility and moral ethics.
+              </p>
+              <p>To be able to explore and discover new techniques and applications concerning marketing and product
+                developments.</p>
+              <p>To consistently satisfy every customer we worked with by giving our best anytime.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+  <!--/ menu -->
+  <!-- contact -->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="header-h">Contact Information</h1>
+          <p class="header-p">You may contact us with the following:</p>
+        </div>
+      </div>
+      <div class="row msg-row">
+        <div class="col-md-4 col-sm-4 mr-15">
+          <div class="media-2">
+            <div class="media-left">
+              <div class="contact-phone bg-1 text-center"><span class="phone-in-talk fa fa-phone"></span></div>
+            </div>
+            <div class="media-body">
+              <h4 class="dark-blue regular">Phone Numbers</h4>
+              <p class="light-blue regular alt-p">09264055668- <span class="contacts-sp">Reseller</span></p>
+              <p class="light-blue regular alt-p">09975604361- <span class="contacts-sp">Inquiries</span></p>
+            </div>
+          </div>
+          <div class="media-2">
+            <div class="media-left">
+              <div class="contact-phone bg-1 text-center"><span class="phone-in-talk fa fa-tty"></span></div>
+            </div>
+            <div class="media-body">
+              <h4 class="dark-blue regular">Telephone Number</h4>
+              <p class="light-blue regular alt-p">(02) 357-8558 </p>
+            </div>
+          </div>
+          <div class="media-2">
+            <div class="media-left">
+              <div class="contact-email bg-14 text-center"><span class="hour-icon fa fa-clock-o"></span></div>
+            </div>
+            <div class="media-body">
+              <h4 class="dark-blue regular">Opening Hours</h4>
+              <p class="light-blue regular alt-p"> Monday to Saturday 09:00 AM - 06:00 PM</p>
+            </div>
+          </div>
+        </div>
+        <!--         <div class="col-md-8 col-sm-8">
+          <form action="" method="post" role="form" class="contactForm">
+            <div id="sendmessage">Your booking request has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <div class="col-md-6 col-sm-6 contact-form pad-form">
+              <div class="form-group label-floating is-empty">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                  data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+
+            </div>
+            <div class="col-md-6 col-sm-6 contact-form">
+              <div class="form-group">
+                <input type="date" class="form-control label-floating is-empty" name="date" id="date" placeholder="Date"
+                  data-rule="required" data-msg="This field is required" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 contact-form pad-form">
+              <div class="form-group">
+                <input type="email" class="form-control label-floating is-empty" name="email" id="email"
+                  placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 contact-form">
+              <div class="form-group">
+                <input type="time" class="form-control label-floating is-empty" name="time" id="time" placeholder="Time"
+                  data-rule="required" data-msg="This field is required" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 contact-form">
+              <div class="form-group">
+                <input type="text" class="form-control label-floating is-empty" name="phone" id="phone"
+                  placeholder="Phone" data-rule="required" data-msg="This field is required" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 contact-form">
+              <div class="form-group">
+                <input type="text" class="form-control label-floating is-empty" name="people" id="people"
+                  placeholder="People" data-rule="required" data-msg="This field is required" />
+                <div class="validation"></div>
+              </div>
+            </div>
+            <div class="col-md-12 contact-form">
+              <div class="form-group label-floating is-empty">
+                <textarea class="form-control" name="message" rows="5" rows="3" data-rule="required"
+                  data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validation"></div>
+              </div>
+
+            </div>
+            <div class="col-md-12 btnpad">
+              <div class="contacts-btn-pad">
+                <button class="contacts-btn">Book Table</button>
+              </div>
+            </div>
+          </form>
+        </div> -->
+      </div>
+    </div>
+  </section>
+  <!-- / contact -->
+  <!-- footer -->
+  <footer class="footer text-center">
+    <div class="footer-top">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6 text-center">
+          <div class="widget">
+            <h4 class="widget-title">Golden Seed Packaging Solutions Inc.</h4>
+            <address>95 Auditing St. Brgy Tandang Sora, Quezon City</address>
+            <div class="social-list">
+              <a target="blank"
+                href="https://www.google.com.ph/maps/place/95+Auditing,+Tandang+Sora,+Quezon+City,+Metro+Manila/@14.6766544,121.0251934,21z/data=!4m5!3m4!1s0x3397b6d083cb7331:0xdca5572ce9bb2aff!8m2!3d14.6767008!4d121.0253138?hl=en">
+                <i class="fa fa-map-marker"></i>
+              </a>
+              <a target="blank" href="https://www.facebook.com/golden.seed.792"><i class="fa fa-facebook"
+                  aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- / footer -->
+
+  <script src="index.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+  <script src="lightbox2/js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'alwaysShowNavOnTouchDevices': true,
+      'disableScrolling': true,
+      'fitImagesInViewport': true,
+      'maxWidth': 800
+    })
+   /*  $(".pop").on("click", function () {
+        $('#dt-modal').empty();
+        $('#dt-sub').empty();
+        let x = $("img", this).attr('src');
+        let a = $(this).parentsUntil('.row').parent().first().find('.header-h').text();
+        let b = $(this).parentsUntil('.row').parent().first().find('.details-list-ul');
+        let c = $(this).parentsUntil('.row').parent().first().find('.details-sub');
+        $('#myModalLabel').text(a);
+        $('#phead').text(a);
+        $('#imagepreview').attr('src', x); // here asign the image to the modal when the user click the enlarge link
+        $('#dt-modal').append(b.clone());
+        $('#dt-sub').append(c.clone());
+        $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+      }); */
+  </script>
+</body>
+
+</html>
